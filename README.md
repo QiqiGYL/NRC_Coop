@@ -85,6 +85,34 @@ Outputs results to a CSV file.
 
 The main repository contains C++ files for the implementation homomorphic methods
 
+
+## Calculate Precision with C++ Code
+
+### Files
+1. **lib-benchmark-precision.cpp**: Located at `openfhe-development/benchmark/src`.
+2. **run_big_table.csv.sh**: Located at `openfhe-development/build`.
+
+### Prerequisites
+Before running the benchmarking program, ensure the following:
+- A CSV file named `big_table.csv` must exist in the `openfhe-development/build` directory.
+
+### Purpose
+The benchmarking program automates the evaluation of CKKS precision in OpenFHE. The shell script `run_big_table.csv.sh`:
+- Executes the `lib-benchmark-precision` binary.
+- Reads the input CSV file (`big_table.csv`) row by row, passing parameters to OpenFHE.
+- Measures CKKS precision for the provided parameters.
+- Output the original parameters along with their precision results to the new CSV file ('big_table_precision.csv').
+
+### Steps to Run
+1. Make the shell script executable:
+   ```bash
+   chmod +x run_big_table.csv.sh
+2. Now to run the code:
+   ```bash
+   cmake ..
+   make lib-benchmark-precision
+   ./run_big_table.csv.sh
+
 ## Installation
 
 Clone the repository: 
