@@ -85,6 +85,34 @@ Outputs results to a CSV file.
 
 The main repository contains C++ files for the implementation homomorphic methods
 
+## Installation
+
+Clone the repository: 
+
+```bash
+https://git-collab.nrc-cnrc.gc.ca/JeanBelo.Klamti/privacy-preserving-library-project.git
+cd privacy-preserving-library-project
+```
+
+Install dependencies:
+```bash
+pip install pandas
+
+```
+## Deployment
+
+To deploy this project run
+
+```bash
+python CKKS_parameters_draft6.py
+```
+
+The results will be saved in ```results.csv``` in the same directory.
+## Explanation
+
+---
+
+
 
 ## Calculate OpenFHE Precision with C++ Code
 
@@ -113,33 +141,6 @@ The benchmarking program automates the evaluation of CKKS precision in OpenFHE. 
    make lib-benchmark-precision
    ./run_big_table.csv.sh
 
-## Installation
-
-Clone the repository: 
-
-```bash
-https://git-collab.nrc-cnrc.gc.ca/JeanBelo.Klamti/privacy-preserving-library-project.git
-cd privacy-preserving-library-project
-```
-
-Install dependencies:
-```bash
-pip install pandas
-
-```
-## Deployment
-
-To deploy this project run
-
-```bash
-python CKKS_parameters_draft6.py
-```
-
-The results will be saved in ```results.csv``` in the same directory.
-## Explanation
-
-
----
 ## Acknowledgements
 
  - Cheon, J.H., Kim, A., Kim, M., Song, Y.: *Homomorphic encryption for arithmetic of approximate numbers*. In: Advances in Cryptology–ASIACRYPT 2017: 23rd International Conference on the Theory and Applications of Cryptology and Information Security, Hong Kong, China, December 3-7, 2017, Proceedings, Part I 23. pp. 409–437. Springer (2017).  
