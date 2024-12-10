@@ -86,7 +86,7 @@ Outputs results to a CSV file.
 The main repository contains C++ files for the implementation homomorphic methods
 
 
-## Calculate Precision with C++ Code
+## Calculate OpenFHE Precision with C++ Code
 
 ### Files
 1. **lib-benchmark-precision.cpp**: Located at `openfhe-development/benchmark/src`.
