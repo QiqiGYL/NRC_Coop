@@ -14,7 +14,7 @@ This project is a privacy-presrving Library that aims to implement and and perfo
 
 # Repositories
 
-## Python_code_for_FHE_paramters
+## 1. Python_code_for_FHE_paramters
 
 
 **List of Required Parameters for FHE (based on OPenFHE):**
@@ -114,7 +114,7 @@ The results will be saved in ```results.csv``` in the same directory.
 
 
 
-## Calculate OpenFHE Precision with C++ Code
+## 2. Calculate OpenFHE Precision with C++ Code
 
 ### Files
 1. **lib-benchmark-precision.cpp**: Located at `openfhe-development/benchmark/src`.
@@ -140,6 +140,31 @@ The benchmarking program automates the evaluation of CKKS precision in OpenFHE. 
    cmake ..
    make lib-benchmark-precision
    ./run_big_table.csv.sh
+
+## 3. CKKS Parameters Optimization with Python
+
+### File
+- **CKKS_paramters_opt.py**: Located at `openfhe-development/build`.
+
+### Prerequisites
+Before running this script, ensure the following:
+- A SQLite database file named `example_3.db` must exist in the `openfhe-development/build` directory.
+
+### Purpose
+The purpose of this script is to enable users to filter data from a database for CKKS parameter optimization. It:
+1. Reads the SQLite database (`example_3.db`) to retrieve its data structure.
+2. Displays the available columns for user reference.
+3. Prompts the user to enter the variable they wish to filter.
+4. Outputs the filtered results into a CSV file named `filtered_output.csv`, saved in the `openfhe-development/build` directory.
+
+> **Note:** This script is currently a draft. Future updates will include a user-friendly GUI for enhanced interaction.
+
+### Steps to Run
+1. Navigate to the `openfhe-development/build` directory.
+2. Execute the script using Python:
+   ```bash
+   python3 CKKS_paramters_opt.py
+
 
 ## Acknowledgements
 
