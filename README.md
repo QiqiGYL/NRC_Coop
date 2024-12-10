@@ -165,6 +165,34 @@ The purpose of this script is to enable users to filter data from a database for
    ```bash
    python3 CKKS_paramters_opt.py
 
+## 4. Benchmarking with Multi CSV File Outputs
+
+### Files
+1. **lib-benchmark-8files.cpp**: Located in `openfhe-development/benchmark/src`.
+2. **run_benchmark_8files.sh**: Located in `openfhe-development/build`.
+3. **merge.py**: Located in `openfhe-development/build`.
+
+### Purpose
+This program automates the benchmarking process and organizes results into CSV files for analysis. The workflow includes:
+1. Running the C++ program (`lib-benchmark-8files.cpp`) via the shell script (`run_benchmark_8files.sh`).
+2. Capturing benchmark times and CPU consumption for each function and saving them to a CSV file.
+3. Generating an organized CSV file with variable columns from the C++ program.
+4. Using the Python script (`merge.py`) to:
+   - Merge the two CSV files into one comprehensive file containing variable names, benchmark times, and CPU usage.
+   - Separate the time and CPU consumption for each function into smaller, more specific CSV files.
+
+### Steps to Run
+1. Place the files in their respective directories:
+   - `lib-benchmark-8files.cpp` in `benchmark/src`.
+   - `run_benchmark_8files.sh` and `merge.py` in `build`.
+
+2. In the `build` directory, execute the following commands:
+   ```bash
+   chmod +x run_benchmark_8files.sh
+   cmake ..
+   ./run_benchmark_8files.sh
+   python3 merge.py
+
 
 ## Acknowledgements
 
