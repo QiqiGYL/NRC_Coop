@@ -114,7 +114,7 @@ The results will be saved in ```results.csv``` in the same directory.
 
 
 
-## 2. Calculate OpenFHE Precision with C++ Code (using csv)
+## 2. Calculate OpenFHE Precision with C++ Code (using CSV)
 
 ### Files
 1. **lib-benchmark-precision_csv.cpp**: Located at `openfhe-development/benchmark/src`.
@@ -126,7 +126,7 @@ Before running the benchmarking program, ensure the following:
 
 ### Purpose
 The benchmarking program automates the evaluation of CKKS precision in OpenFHE. The shell script `run_big_table.csv.sh`:
-- Executes the `lib-benchmark-precision` binary.
+- Executes the `lib-benchmark-precision_csv` binary.
 - Reads the input CSV file (`big_table_128.csv`) row by row, passing parameters to OpenFHE.
 - Measures CKKS precision for the provided parameters.
 - Output the original parameters along with their precision results to the new CSV file ('big_table_128_precision.csv').
@@ -138,21 +138,58 @@ The benchmarking program automates the evaluation of CKKS precision in OpenFHE. 
 #### First-Time Setup
 1. Make the shell script executable:
    ```bash
-   chmod +x run_big_table.csv.sh
-2. Build and  run the code:
+   chmod +x run_big_table_csv.sh
+2. Build and run the code:
    ```bash
    cmake ..
-   make lib-benchmark-precision
-   ./run_big_table.csv.sh
+   make lib-benchmark-precision_csv
+   ./run_big_table_csv.sh
 
 #### After Making Changes to the C++ Code
 You only need to recompile and rerun:
    ```bash
-   make lib-benchmark-precision
-   ./run_big_table.csv.sh
+   make lib-benchmark-precision_csv
+   ./run_big_table_csv.sh
    ```
 
-## 3. CKKS Parameters Optimization with Python
+## 3. Calculate OpenFHE Precision with C++ Code (using SQLite3 Database)
+
+### Files
+1. **lib-benchmark-precision_db.cpp**: Located at `openfhe-development/benchmark/src`.
+2. **run_big_table_db.sh**: Located at `openfhe-development/build`.
+
+### Prerequisites
+Before running the benchmarking program, ensure the following:
+- A SQLite3 database file named `big_table_128.db` must exist in the `openfhe-development/build` directory. (The user can manually change the imported database file name in `run_big_table_db.sh`.)
+
+### Purpose
+The benchmarking program automates the evaluation of CKKS precision in OpenFHE, using a SQLite3 database. The shell script `run_big_table_db.sh`:
+- Executes the `lib-benchmark-precision_db` binary.
+- Reads the input database (`big_table_128.db`) row by row, passing parameters to OpenFHE.
+- Measures CKKS precision for the provided parameters.
+- Outputs the original parameters along with their precision results to a new SQLite3 database (`big_table_128_precision.db`).
+
+### Steps to Run
+
+#### First-Time Setup
+1. Make the shell script executable:
+   ```bash
+   chmod +x run_big_table_db.sh
+2. Build and  run the code:
+   ```bash
+   cmake ..
+   make lib-benchmark-precision_db
+   ./run_big_table_db.sh
+
+#### After Making Changes to the C++ Code
+You only need to recompile and rerun:
+   ```bash
+   make lib-benchmark-precision_db
+   ./run_big_table_db.sh
+   ```
+
+
+## 4. CKKS Parameters Optimization with Python
 
 ### File
 - **CKKS_paramters_opt.py**: Located at `openfhe-development/build`.
@@ -176,7 +213,7 @@ The purpose of this script is to enable users to filter data from a database for
    ```bash
    python3 CKKS_paramters_opt.py
 
-## 4. Benchmarking with Multi CSV File Outputs
+## 5. Benchmarking with Multi CSV File Outputs
 
 ### Files
 1. **lib-benchmark-8files.cpp**: Located in `openfhe-development/benchmark/src`.
