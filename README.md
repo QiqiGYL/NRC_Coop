@@ -130,6 +130,7 @@ The benchmarking program automates the evaluation of CKKS precision in OpenFHE. 
 - Reads the input CSV file (`big_table_128.csv`) row by row, passing parameters to OpenFHE.
 - Measures CKKS precision for the provided parameters.
 - Output the original parameters along with their precision results to the new CSV file ('big_table_128_precision.csv').
+
 **Warning:** The maximum capacity of a CSV file is approximately 1 million rows. It is unclear what will happen if the program generates more than this limit.
 
 ### Steps to Run
@@ -143,8 +144,8 @@ The benchmarking program automates the evaluation of CKKS precision in OpenFHE. 
    make lib-benchmark-precision
    ./run_big_table.csv.sh
 
-#### First-Time Setup
-After Making Changes to the C++ Code, you only need to recompile and rerun:
+#### After Making Changes to the C++ Code
+You only need to recompile and rerun:
    ```bash
    make lib-benchmark-precision
    ./run_big_table.csv.sh
