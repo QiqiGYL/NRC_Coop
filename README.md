@@ -125,7 +125,7 @@ Before running the benchmarking program, ensure the following:
 - A CSV file named `big_table_128.csv` must exist in the `openfhe-development/build` directory. (The user can manually change the imported CSV file name in `run_big_table_csv.sh`.)
 
 ### Purpose
-The benchmarking program automates the evaluation of CKKS precision in OpenFHE. The shell script `run_big_table.csv.sh`:
+The benchmarking program automates the evaluation of CKKS precision in OpenFHE. The shell script `run_big_table_csv.sh`:
 - Executes the `lib-benchmark-precision_csv` binary.
 - Reads the input CSV file (`big_table_128.csv`) row by row, passing parameters to OpenFHE.
 - Measures CKKS precision for the provided parameters.
