@@ -20,10 +20,9 @@ This project is a privacy-presrving Library that aims to implement and and perfo
 
 # Repositories
 
-## 1. Python_code_for_FHE_paramters
+## 1. Calculate OpenFHE Parameters with Python Code
 
-
-**List of Required Parameters for FHE (based on OPenFHE):**
+**List of Required Parameters for FHE (based on OpenFHE):**
 
 - Ring Dimension `N`
 - Security level `lambda`
