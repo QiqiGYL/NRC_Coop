@@ -114,11 +114,11 @@ The results will be saved in ```results.csv``` in the same directory.
 
 
 
-## 2. Calculate OpenFHE Precision with C++ Code
+## 2. Calculate OpenFHE Precision with C++ Code (using csv)
 
 ### Files
-1. **lib-benchmark-precision.cpp**: Located at `openfhe-development/benchmark/src`.
-2. **run_big_table.csv.sh**: Located at `openfhe-development/build`.
+1. **lib-benchmark-precision_csv.cpp**: Located at `openfhe-development/benchmark/src`.
+2. **run_big_table_csv.sh**: Located at `openfhe-development/build`.
 
 ### Prerequisites
 Before running the benchmarking program, ensure the following:
@@ -130,14 +130,22 @@ The benchmarking program automates the evaluation of CKKS precision in OpenFHE. 
 - Reads the input CSV file (`big_table_128.csv`) row by row, passing parameters to OpenFHE.
 - Measures CKKS precision for the provided parameters.
 - Output the original parameters along with their precision results to the new CSV file ('big_table_128_precision.csv').
+**Warning:** The maximum capacity of a CSV file is approximately 1 million rows. It is unclear what will happen if the program generates more than this limit.
 
 ### Steps to Run
+#### First-Time Setup
 1. Make the shell script executable:
    ```bash
    chmod +x run_big_table.csv.sh
-2. Now to run the code:
+2. Build and  run the code:
    ```bash
    cmake ..
+   make lib-benchmark-precision
+   ./run_big_table.csv.sh
+
+#### First-Time Setup
+After Making Changes to the C++ Code, you only need to recompile and rerun:
+   ```bash
    make lib-benchmark-precision
    ./run_big_table.csv.sh
 
