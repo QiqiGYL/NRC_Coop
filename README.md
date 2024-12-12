@@ -134,6 +134,7 @@ The benchmarking program automates the evaluation of CKKS precision in OpenFHE. 
 **Warning:** The maximum capacity of a CSV file is approximately 1 million rows. It is unclear what will happen if the program generates more than this limit.
 
 ### Steps to Run
+
 #### First-Time Setup
 1. Make the shell script executable:
    ```bash
