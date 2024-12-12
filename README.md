@@ -11,6 +11,12 @@ This project is a privacy-presrving Library that aims to implement and and perfo
 
 ### For C++ Codes
 
+# File Explanation
+
+- **big_table_128_precision_final1.csv**: This CSV file is generated from a remote machine. The process was terminated at the parameters: `lambda = 128`, `log2_N = 16`, `delta = 28`, `q0 = 32`, `L = 27`, and `log2_precision = 6`.
+
+- **big_table_128_precision_final1.db**: The SQLite3 database version of the file with the same name.
+
 
 # Repositories
 
@@ -129,7 +135,7 @@ The benchmarking program automates the evaluation of CKKS precision in OpenFHE. 
 - Executes the `lib-benchmark-precision_csv` binary.
 - Reads the input CSV file (`big_table_128.csv`) row by row, passing parameters to OpenFHE.
 - Measures CKKS precision for the provided parameters.
-- Output the original parameters along with their precision results to the new CSV file ('big_table_128_precision.csv').
+- Output the original parameters along with their precision results to the new CSV file (`big_table_128_precision.csv`).
 
 **Warning:** The maximum capacity of a CSV file is approximately 1 million rows. It is unclear what will happen if the program generates more than this limit.
 
