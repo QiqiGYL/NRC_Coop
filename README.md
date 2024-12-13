@@ -117,9 +117,30 @@ The results will be saved in ```results.csv``` in the same directory.
 
 ---
 
+## 2. Convert CSV to SQLite3 Database with Python
 
+### File
+- **CKKS_convertDB.py**: Located in `openfhe-development/build`.
 
-## 2. Calculate OpenFHE Precision with C++ Code (using CSV)
+### Prerequisites
+Before running this script, ensure the following:
+- A CSV file must be available as input. The file should be located in the same directory where the script is executed.  (The user can manually change the imported CSV file name in `CKKS_convertDB.py`.)
+- The `sqlite3` library must be installed in your Python environment.
+
+### Purpose
+The script `CKKS_convertDB.py` simplifies the process of converting a CSV file into a SQLite3 database. It:
+1. Takes a CSV file as input.
+2. Converts the contents of the CSV into a SQLite3 database file.
+3. Saves the output database file with the same name as the input CSV file (but with a `.db` extension).
+
+### Steps to Run
+1. Navigate to the `openfhe-development/build` directory or the directory containing the script and input CSV file.
+2. Execute the script using Python:
+   ```bash
+   python3 CKKS_convertDB.py
+   ```
+
+## 3. Calculate OpenFHE Precision with C++ Code (using CSV)
 
 ### Files
 1. **lib-benchmark-precision_csv.cpp**: Located at `openfhe-development/benchmark/src`.
@@ -157,7 +178,7 @@ You only need to recompile and rerun:
    ./run_big_table_csv.sh
    ```
 
-## 3. Calculate OpenFHE Precision with C++ Code (using SQLite3 Database)
+## 4. Calculate OpenFHE Precision with C++ Code (using SQLite3 Database)
 
 ### Files
 1. **lib-benchmark-precision_db.cpp**: Located at `openfhe-development/benchmark/src`.
@@ -194,7 +215,7 @@ You only need to recompile and rerun:
    ./run_big_table_db.sh
    ```
 
-## 4. Find The Minimum OpenFHE Precision with Python 
+## 5. Find The Minimum OpenFHE Precision with Python 
 
 ### File
 - **filterDB.py**: Located in `openfhe-development/build`.
@@ -217,7 +238,7 @@ The python code `filterDB.py` processes the input database to:
    python3 filterDB.py
    ```
 
-## 5. CKKS Parameters Optimization with Python
+## 6. CKKS Parameters Optimization with Python
 
 ### File
 - **CKKS_paramters_opt_GUI.py**: Located at `openfhe-development/build`.
@@ -241,7 +262,7 @@ The purpose of this script is to enable users to filter data from a database for
    ```bash
    python3 CKKS_paramters_opt.py
 
-## 6. Benchmarking with Multi CSV File Outputs
+## 7. Benchmarking with Multi CSV File Outputs
 
 ### Files
 1. **lib-benchmark-8files.cpp**: Located in `openfhe-development/benchmark/src`.
