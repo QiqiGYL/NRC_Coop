@@ -1,16 +1,29 @@
 
 # Privacy-Preserving-Library-Project
 
-This project is a privacy-presrving Library that aims to implement and and perform benchmarking of homomorphic methods. It includes secure and optimal FHE paramters computation. 
+This project is a privacy-preserving Library that aims to implement and and perform benchmarking of homomorphic methods. It includes secure and optimal FHE parameters computation. 
 
 # Dependancies and Library Installation
 
-(To do: List all required external library for both Python and C++ Code)
-
 ### For Python Codes
+The following libraries are required for running the Python scripts:
+- `sqlite3`: For database operations (typically included with Python by default).
+- `tkinter`: For building graphical user interfaces (GUIs).
+- `pandas`: For data manipulation and exporting results to CSV.
+
+To install the additional libraries (`tkinter` and `pandas`), use:
+```bash
+pip install pandas tk
+```
 
 ### For C++ Codes
+The following library is required for running the C++ programs:
+- `sqlite3`: For interacting with SQLite databases.
 
+To install the sqlite3 libraries, use:
+```bash
+sudo apt-get install libsqlite3-dev
+```
 
 **Features for TFHE/FHEW Parameters Generation File:**
 ## Main repository
@@ -292,6 +305,11 @@ Example **filtered_output.csv** output should have seven columns:
 
 ### File
 - **CKKS_paramters_opt_GUI_ver2.py**: Located in `openfhe-development/build`.
+
+### Prerequisites
+Before running this script, ensure the following:
+- A SQLite database file named `big_table_128_precision_final1_f.db` must exist in the `openfhe-development/build` directory.  (The user can manually change the imported database file name in `CKKS_paramters_opt_GUI.py`.)
+- The `sqlite3` and the `tkinter` library must be installed in your Python environment.
 
 ### Purpose
 The purpose of this script is to enable users to filter data from a database for CKKS parameter optimization. It:
