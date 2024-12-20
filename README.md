@@ -54,6 +54,11 @@ cd privacy-preserving-library-project
 - **big_table_128_precision_final1.csv**: This CSV file was generated on a remote machine for Step 4. The process was terminated at the parameters: `lambda = 128`, `log2_N = 16`, `delta = 28`, `q0 = 32`, `L = 27`, and `log2_precision = 6`.
 
 - **big_table_128_precision_final1.db**: Convert **big_table_128_precision_final1.csv** to Sqlite3 database by using Step 5.
+  
+- **big_table_128_precision_final1_f.db**: Generated from Step 7.
+  
+- **benchmark_9files.csv**: Used for step 11. It contains six rows for `log2_N = 14, 15` and `OpenFHE_precision = 10, 20, 30`. For each combination, the row with the largest `L`, `log2_delta`, and `q0` is selected.
+- 
 
 
 # Repositories
@@ -335,7 +340,7 @@ Example **filtered_output.csv** output should have seven columns:
 
 ### Prerequisites
 Before running this script, ensure the following:
-- A SQLite database file named `big_table_128_precision_final1_f.db` must exist in the `openfhe-development/build` directory.  (The user can manually change the imported database file name in `CKKS_paramters_opt_GUI.py`.)
+- A SQLite database file named `big_table_128_precision_final1_f.db` must exist in the `openfhe-development/build` directory.  (The user can manually change the imported database file name in `CKKS_paramters_opt_GUI_ver2.py`.)
 
 ### Purpose
 The purpose of this script is to enable users to filter data from a database for CKKS parameter optimization. It:
@@ -365,10 +370,12 @@ Example output CSV file should have seven columns:
 2. Ensure the SQLite database file `big_table_128_precision_final1_f.db` is present in the same directory.
 3. Execute the script using Python:
    ```bash
-   python CKKS_paramters_opt_GUI_ver2.py
+   python3 CKKS_paramters_opt_GUI_ver2.py
    ```
    
 ## 10. Benchmarking with Multi CSV File Outputs （Version 1）
+
+> **Note:** This version is for a single set of parameters. Users can manually change the variables they want to benchmark in `lib-benchmark-9files_v1.cpp`. For multiple input rows, please proceed to step 11.
 
 ### Files
 1. **lib-benchmark-9files_v1.cpp**: Located in `openfhe-development/benchmark/src`.
@@ -381,15 +388,28 @@ This program automates the benchmarking process while allowing users to manually
 2. Capturing benchmark times and CPU consumption for each function and saving them to a CSV file named `benchmark_time_results.csv`.
 3. Generating an organized CSV file with variable columns from the C++ program named `benchmark_notime_results.csv`.
 4. Using the Python script (`merge1.py`) to:
-   - Merge the two CSV files into one comprehensive file containing variable names, benchmark times, and CPU usage.
-   - Separate the time and CPU consumption for each function into smaller, more specific CSV files.
+   - Merge the two CSV files into a comprehensive file named `benchmark_results_full.csv`, which includes variable names, benchmark times, and CPU usage.
+   - Separate the time and CPU consumption for each function into smaller, more specific CSV files. Each file is named `'function_name'_benchmark_results_full.csv`.
+
+### Outputs
+Example output CSV file should have ten columns:
+   - `Function_name`:  The name of the CKKS function.
+   - `lambda`: Security level. Also known as 'SecurityLevel' in OpenFHE.
+   - `log2_N`: Logarithm base 2 of the ring dimension. Also known as 'RingDim' in OpenFHE.
+   - `log2_delta`: Logarithm base 2 of the scaling modulus (`q_i`). Also known as 'ScalingModSize' in OpenFHE.
+   - `q0`: First modulus size. Also known as 'FirstModSize' in OpenFHE.
+   - `L`: Multiplicative depth. Also known as 'MultiplicativeDepth' in OpenFHE.
+   - `ciphertext_level_1`: The level of ciphertext 1.
+   - `ciphertext_level_2`: The level of ciphertext 2.
+   - `real_time`: The real time taken by the benchmarking to run (in us).
+   - `cpu_time`: the CPU time taking the benchmarking to run (in us).
 
 ### Steps to Run
 
 #### First-Time Setup
 In the `build` directory, execute the following commands:
    ```bash
-   chmod +x run_benchmark_8files.sh
+   chmod +x run_benchmark_9files_v1.sh
    cmake ..
    make lib-benchmark-9files_v1
    ./run_benchmark_9files_v1.sh
@@ -413,16 +433,31 @@ You only need to recompile and rerun:
 
 ### Prerequisites
 Before running this program, ensure the following:
-- A CSV file named `benchmark_9files.csv`, or any CSV file generated from step 6, must exist in the `openfhe-development/build` directory, user can manually change the import CSV file name in 'run_benchmark_9files_v2.sh'.
+- A CSV file named `benchmark_9files.csv`, or any CSV file generated from step 8 or step 9, must exist in the `openfhe-development/build` directory, user can manually change the import CSV file name in 'run_benchmark_9files_v2.sh'.
 
 ### Purpose
-This program automates the benchmarking process with the shell script processes the `benchmark_9files.csv` file row by row, passing the variables to the C++ program (`lib-benchmark-9files_v2.cpp`).  It also organizes results into CSV files for analysis. The workflow includes:
+This program automates the benchmarking process with the shell script processes the `benchmark_9files_v2.csv` file row by row, passing the variables to the C++ program (`lib-benchmark-9files_v2.cpp`). It also organizes results into CSV files for analysis. The workflow includes:
 1. Running the C++ program (`lib-benchmark-9files_v2.cpp`) via the shell script (`run_benchmark_9files_v2.sh`).
 2. Passing parameters row by row from the input CSV file (`benchmark_9files.csv`) into the C++ program.
 3. Generating a CSV file named `benchmark_time_results.csv` that includes benchmark times, CPU consumption, and variable columns from the C++ program.
 4. Using the Python script (`merge2.py`) to:
-   - Organize the `benchmark_time_results.csv` into a more readable format and output to another CSV file named 'benchmark_full_output.csv'.
-   - Separate the time and CPU consumption for each function into smaller, more specific CSV files and store them in a subdirectory named 'split_benchmarks'.
+   - Organize the `benchmark_time_results.csv` into a more readable format and output to another CSV file named `benchmark_full_output.csv`.
+   - Separate the time and CPU consumption for each function into smaller, more specific CSV files and store them in a subdirectory named `split_benchmarks`.
+
+### Outputs
+Example output CSV file should have twelve columns:
+   - `Function_name`:  The name of the CKKS function.
+   - `lambda`: Security level. Also known as 'SecurityLevel' in OpenFHE.
+   - `log2_N`: Logarithm base 2 of the ring dimension. Also known as 'RingDim' in OpenFHE.
+   - `log2_delta`: Logarithm base 2 of the scaling modulus (`q_i`). Also known as 'ScalingModSize' in OpenFHE.
+   - `q0`: First modulus size. Also known as 'FirstModSize' in OpenFHE.
+   - `L`: Multiplicative depth. Also known as 'MultiplicativeDepth' in OpenFHE.
+   - `log2_precision`: Logarithm base 2 of the precision bits.
+   - `ciphertext_level_1`: The level of ciphertext 1.
+   - `ciphertext_level_2`: The level of ciphertext 2.
+   - `OpenFHE_precision`: The precision generated by OpenFHE.
+   - `real_time`: The real time taken by the benchmarking to run (in us).
+   - `cpu_time`: the CPU time taking the benchmarking to run (in us).
 
 ### Steps to Run
 
