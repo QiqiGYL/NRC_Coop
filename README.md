@@ -39,26 +39,6 @@ https://git-collab.nrc-cnrc.gc.ca/JeanBelo.Klamti/privacy-preserving-library-pro
 cd privacy-preserving-library-project
 ```
 
-Install dependencies:
-```bash
-pip install pandas
-
-```
-## Deployment
-
-To deploy this project run
-
-```bash
-python CKKS_parameters_draft6.py
-```
-
-The results will be saved in ```results.csv``` in the same directory.
-## Explanation
-
----
-
-
-
 # File Explanation
 
 - **bounds.csv**: Generated from step 1.
@@ -77,6 +57,22 @@ The results will be saved in ```results.csv``` in the same directory.
 
 
 # Repositories
+
+## Generating Random Ciphertexts in C++
+
+### Files
+1. **random_ct.h**: Located in `openfhe-development/src/pke/include/encoding`.
+2. **random_ct.cpp**: Located in `openfhe-development/src/pke/lib/encoding`.
+
+### Purpose
+These files enable C++ programs to generate random ciphertexts with desired levels by including the `random_ct.h` file. The implementation in `random_ct.cpp` handles the logic for generating the ciphertexts.
+
+### Usage
+To use this functionality in your C++ project:
+1. Include the `random_ct.h` file in your code:
+   ```cpp
+   #include "random_ct.h"
+   ```
 
 ## 1. Generating CKKS Parameter CSV Tables with Python
 
