@@ -63,8 +63,6 @@ The results will be saved in ```results.csv``` in the same directory.
 - **big_table_128_precision_final1.db**: Convert **big_table_128_precision_final1.csv** to Sqlite3 database by using Step 3.
 
 
-
-
 # Repositories
 
 ## 1. Generating CKKS Parameter CSV Tables with Python
@@ -116,6 +114,7 @@ The benchmarking program automates the evaluation of CKKS precision in OpenFHE. 
 - Measures CKKS precision for the provided parameters.
 - Output the original parameters along with their precision results to the new CSV file (`big_table_128_precision.csv`).
 
+### Outputs
 Example **big_table_128_precision.csv** output should have nine columns:
    - `lambda`: Security level. Also known as 'SecurityLevel' in OpenFHE.
    - `log2_N`: Logarithm base 2 of the ring dimension. Also known as 'RingDim' in OpenFHE.
@@ -189,6 +188,7 @@ The benchmarking program automates the evaluation of CKKS precision in OpenFHE, 
 - Measures CKKS precision for the provided parameters.
 - Outputs the original parameters along with their precision results to a new SQLite3 database (`big_table_128_precision.db`).
 
+### Outputs
 Example **big_table_128_precision.db** output should have nine columns:
    - `lambda`: Security level. Also known as 'SecurityLevel' in OpenFHE.
    - `log2_N`: Logarithm base 2 of the ring dimension. Also known as 'RingDim' in OpenFHE.
@@ -235,6 +235,7 @@ The python code `filterDB.py` processes the input database to:
 2. Identify the row with the lowest `OpenFHE_precision` for each unique combination of `lambda`, `log2_N`, `delta`, `q0`, `L`, and `log2_precision`.
 3. Output the results into a new database file named `big_table_128_precision_final1_f.db`, saved in the same directory.
 
+### Outputs
 Example **big_table_128_precision_final1_f.db** output should have seven columns:
    - `lambda`: Security level. Also known as 'SecurityLevel' in OpenFHE.
    - `log2_N`: Logarithm base 2 of the ring dimension. Also known as 'RingDim' in OpenFHE.
@@ -267,6 +268,7 @@ The purpose of this script is to enable users to filter data from a database for
 2. Displays a graphical user interface (GUI) allowing the user to select `lambda`, `log2_N`, `delta`, `q0`, `L`, `log2_precision`, and `OpenFHE_precision` variables they wish to filter.
 3. Outputs the filtered results into a CSV file named `filtered_output.csv`, saved in the `openfhe-development/build` directory, based on the user's filtering criteria.
 
+### Outputs
 Example **filtered_output.csv** output should have seven columns:
    - `lambda`: Security level. Also known as 'SecurityLevel' in OpenFHE.
    - `log2_N`: Logarithm base 2 of the ring dimension. Also known as 'RingDim' in OpenFHE.
