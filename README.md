@@ -70,12 +70,12 @@ The results will be saved in ```results.csv``` in the same directory.
    - `lambda`: Security level. Also known as 'SecurityLevel' in OpenFHE.
    - `log2_N`: Logarithm base 2 of the ring dimension. Also known as 'RingDim' in OpenFHE.
    - `max_log2_Q`: Maximum value of log2(Q). Ciphertext Modulus Size `Q=Pq` with `q=q_0*q_1*...*q_L` and `P` is an auxiliary factor. We works with `q_i` suc that `log2(q_i)=log2(delta)` for `i>=1`.
-   - `min_log2_delta`: Minimum value of base 2 scaling modulus ('q_i'). Also known as 'ScalingModSize' in OpenFHE.
+   - `min_log2_delta`: Minimum value of base 2 scaling modulus (`q_i`). Also known as 'ScalingModSize' in OpenFHE.
 
 2. **big_table.csv**: A CSV file with six columns:
    - `lambda`: Security level. Also known as 'SecurityLevel' in OpenFHE.
    - `log2_N`: Logarithm base 2 of the ring dimension. Also known as 'RingDim' in OpenFHE.
-   - `log2_delta`: Logarithm base 2 of the scaling modulus ('q_i'). Also known as 'ScalingModSize' in OpenFHE.
+   - `log2_delta`: Logarithm base 2 of the scaling modulus (`q_i`). Also known as 'ScalingModSize' in OpenFHE.
    - `q0`: First modulus size. Also known as 'FirstModSize' in OpenFHE.
    - `L`: Multiplicative depth. Also known as 'MultiplicativeDepth' in OpenFHE.
    - `log2_precision`: Logarithm base 2 of the precision bits. 
