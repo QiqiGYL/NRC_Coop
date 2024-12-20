@@ -58,8 +58,10 @@ cd privacy-preserving-library-project
 - **big_table_128_precision_final1_f.db**: Generated from Step 7.
   
 - **benchmark_9files.csv**: Used for step 11. It contains six rows for `log2_N = 14, 15` and `OpenFHE_precision = 10, 20, 30`. For each combination, the row with the largest `L`, `log2_delta`, and `q0` is selected.
-- 
-
+  
+- **benchmark_full_output.csv**: Full benchmark result generated from step 11 using **benchmark_9files.csv** as input.
+  
+- **CKKSrns_Add_benchmark_results.csv**, **CKKSrns_Add_plaintext_benchmark_results.csv**, **CKKSrns_MultNoRelin_benchmark_results.csv**, **CKKSrns_MultRelin_benchmark_results.csv**, **CKKSrns_Mult_benchmark_results.csv**, **CKKSrns_Mult_plaintext_benchmark_results.csv**, **CKKSrns_Sub_benchmark_results.csv**, **CKKSrns_Sub_plaintext_benchmark_results.csv**: : Different specific function benchmark result generated from step 11 using **benchmark_9files.csv** as input.
 
 # Repositories
 
