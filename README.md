@@ -395,14 +395,14 @@ This program automates the benchmarking process while allowing users to manually
 
 ### Outputs
 Example output CSV file should have ten columns:
-   - `Function_name`:  The name of the CKKS function.
-   - `lambda`: Security level. Also known as 'SecurityLevel' in OpenFHE.
-   - `log2_N`: Logarithm base 2 of the ring dimension. Also known as 'RingDim' in OpenFHE.
-   - `log2_delta`: Logarithm base 2 of the scaling modulus (`q_i`). Also known as 'ScalingModSize' in OpenFHE.
-   - `q0`: First modulus size. Also known as 'FirstModSize' in OpenFHE.
-   - `L`: Multiplicative depth. Also known as 'MultiplicativeDepth' in OpenFHE.
-   - `ciphertext_level_1`: The level of ciphertext 1.
-   - `ciphertext_level_2`: The level of ciphertext 2.
+   - `Function Name`:  The name of the CKKS function.
+   - `security level`: Security level. Also known as 'SecurityLevel' in OpenFHE.
+   - `Ring Dimension`: Logarithm base 2 of the ring dimension. Also known as 'RingDim' in OpenFHE.
+   - `Scaling Modulus`: Logarithm base 2 of the scaling modulus (`q_i`). Also known as 'ScalingModSize' in OpenFHE.
+   - `First Modulus`: First modulus size. Also known as 'FirstModSize' in OpenFHE.
+   - `Depth`: Multiplicative depth. Also known as 'MultiplicativeDepth' in OpenFHE.
+   - `Ciphertext level of Ct1`: The level of ciphertext 1.
+   - `Ciphertext level of Ct2`: The level of ciphertext 2.
    - `real_time`: The real time taken by the benchmarking to run (in us).
    - `cpu_time`: the CPU time taking the benchmarking to run (in us).
 
