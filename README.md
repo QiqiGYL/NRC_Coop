@@ -3,6 +3,14 @@
 
 This project is a privacy-preserving Library that aims to implement and and perform benchmarking of homomorphic methods. It includes secure and optimal FHE parameters computation. 
 
+# Preparation
+
+First, make sure to clone the repository to your local machine:
+
+```bash
+git clone https://github.com/openfheorg/openfhe-development.git
+```
+
 # Dependancies and Library Installation
 
 ### For Python Codes
