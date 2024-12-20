@@ -11,79 +11,6 @@ This project is a privacy-presrving Library that aims to implement and and perfo
 
 ### For C++ Codes
 
-# File Explanation
-
-- **big_table_128_precision_final1.csv**: This CSV file is generated from a remote machine. The process was terminated at the parameters: `lambda = 128`, `log2_N = 16`, `delta = 28`, `q0 = 32`, `L = 27`, and `log2_precision = 6`.
-
-- **big_table_128_precision_final1.db**: The SQLite3 database version of the file with the same name.
-
-
-# Repositories
-
-## 1. Calculate OpenFHE Parameters with Python Code
-
-**List of Required Parameters for FHE (based on OpenFHE):**
-
-- Ring Dimension `N`
-- Security level `lambda`
-- Precision Bit `p`
-- multiplicative Depth `L`
-- Scaling Modulus Size `log(delta)`
-- First Modulus Size `q_0`
-- Ciphertext Modulus Size `Q=Pq` with `q=q_0*q_1*...*q_L` and `P` is an auxiliary factor. We works with `q_i` suc that `log2(q_i)=log2(delta)` for `i>=1`.
-- Hamming weight `h`
-- Standard Deviation `sigma`
-
-**Description of Parameters compution and Constraints for FHE:**
-
-To generate Parameters for CKKS we need to take into considerations:
-
-- For a given ring dimension `N` and Security Level `lambda`m the upper bound of `log2(Q)` can be computed by the following (**We need to add reference**): 
- 
-```
-N > [(lambda+110)*log2(Q/sigma)]/7.2, i.e.,  log2(Q)< [(7.2 * N) / (lambda + 110)] + log2(sigma)
-```
-- Given a ciphertext modulus size `log2(Q)` we have the following relation for `log2(q)` and `log2(P)` (**We need to add reference**)
-
-```
-log2(q)=4*log2(Q)/5 and log2(P)=log2(Q)/5, i.e., log2(P)=log2(q)/4
-```
-
-- Given a ring dimension, a standard deviation `sigma` and a hamming weight `h`, the lower bound of the scaling modulus is given by (**We need to add reference**):
-```
-log2(delta)>log2(N+2*B_{clean}) with B_{clean}=8 * sigma * N * sqrt(2) + 6 * sigma * sqrt(N) + 16 * sigma * sqrt(h * N)
-```
-**PS:** There is a relation between the scaling modulus size and the precision bits `p` given by (**We need to add reference**):
-```
-log2(delta)>=p+log2(B_{clean})
-```
-- Given a ciphertext modulus size `log2(Q)` and a scaling modulus size `log2(delta)`, the maximum value of the corresponding multiplicative depth is given by (**We need to add reference**):
-
-```
-log2(delta)<log2(Q)/(L+1), i.e., max(L)<=log2(Q)/log2(delta)-1
-```
-- Selected scaling modulus size `log2(delta)` and first modulus size `log2(q_0)` should verify:
-```
-log2(delta)< log2(q_0)<2*log2(delta)
-```
-
-**Features for CKKS Parameters Generation Files:**
-Computes:
-- **Log2(Q)**: Helps in determining the size of the modulus.
-- **log2(delta)**: Related to the decryption error.
-- **Precision**: Precision for specific security level and N.
-- **L**: Maximum multiplicative depth.
-Supports parameter configurations for:
-- lambda values = [128, 196]
-- log2(N) values = [14, 15]
-- Fixed h value of 256
-Filters results based on precision levels from [8, 16, 32, 64].
-
-Outputs results to a CSV file.
-
-
-**Features for BGV Parameters Generation File:**
-
 
 **Features for TFHE/FHEW Parameters Generation File:**
 ## Main repository
@@ -116,6 +43,49 @@ The results will be saved in ```results.csv``` in the same directory.
 ## Explanation
 
 ---
+
+
+
+# File Explanation
+
+- **big_table_128_precision_final1.csv**: This CSV file is generated from a remote machine. The process was terminated at the parameters: `lambda = 128`, `log2_N = 16`, `delta = 28`, `q0 = 32`, `L = 27`, and `log2_precision = 6`.
+
+- **big_table_128_precision_final1.db**: The SQLite3 database version of the file with the same name.
+
+
+# Repositories
+
+## 1. Generating CKKS Parameter CSV Tables with Python
+
+### Files
+1. **CKKS_parameters_utils.py**: Located in `openfhe-development/build`.
+2. **CKKS_parameters_table.py**: Located in `openfhe-development/build`.
+
+### Purpose
+- **CKKS_parameters_utils.py**: Contains utility functions for performing calculations related to CKKS parameters.
+- **CKKS_parameters_table.py**: Imports and uses the functions from `CKKS_parameters_utils.py` to calculate the relationship equations between various CKKS parameters. It then generates two output files: `bounds.csv` and `big_table.csv`.
+
+### Outputs
+1. **bounds.csv**: A CSV file with four columns:
+   - `lambda`: Security level. Also known as 'SecurityLevel' in OpenFHE.
+   - `log2_N`: Logarithm base 2 of the ring dimension. Also known as 'RingDim' in OpenFHE.
+   - `max_log2_Q`: Maximum value of log2(Q). Ciphertext Modulus Size `Q=Pq` with `q=q_0*q_1*...*q_L` and `P` is an auxiliary factor. We works with `q_i` suc that `log2(q_i)=log2(delta)` for `i>=1`.
+   - `min_log2_delta`: Minimum value of base 2 scaling modulus ('q_i'). Also known as 'ScalingModSize' in OpenFHE.
+
+2. **big_table.csv**: A CSV file with six columns:
+   - `lambda`: Security level. Also known as 'SecurityLevel' in OpenFHE.
+   - `log2_N`: Logarithm base 2 of the ring dimension. Also known as 'RingDim' in OpenFHE.
+   - `log2_delta`: Logarithm base 2 of the scaling modulus ('q_i'). Also known as 'ScalingModSize' in OpenFHE.
+   - `q0`: First modulus size. Also known as 'FirstModSize' in OpenFHE.
+   - `L`: Multiplicative depth. Also known as 'MultiplicativeDepth' in OpenFHE.
+   - `log2_precision`: Logarithm base 2 of the precision bits. 
+
+### Steps to Run
+1. Navigate to the `openfhe-development/build` directory.
+2. Execute `CKKS_parameters_table.py` using Python:
+   ```bash
+   python3 CKKS_parameters_table.py
+   ```bash
 
 ## 2. Convert CSV to SQLite3 Database with Python
 
