@@ -288,6 +288,7 @@ In the `build` directory, execute the following commands:
    make lib-benchmark-9files_v1
    ./run_benchmark_9files_v1.sh
    python3 merge1.py
+   ```
 
 #### After Making Changes to the C++ Code
 You only need to recompile and rerun:
@@ -327,6 +328,7 @@ In the `build` directory, execute the following commands:
    make lib-benchmark-9files_v2
    ./run_benchmark_9files_v2.sh
    python3 merge2.py
+   ```
 
 #### After Making Changes to the C++ Code
 You only need to recompile and rerun:
