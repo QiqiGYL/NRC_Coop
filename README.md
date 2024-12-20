@@ -262,34 +262,79 @@ The purpose of this script is to enable users to filter data from a database for
    ```bash
    python3 CKKS_paramters_opt.py
 
-## 7. Benchmarking with Multi CSV File Outputs
+## 7. Benchmarking with Multi CSV File Outputs （version 1）
 
 ### Files
-1. **lib-benchmark-8files.cpp**: Located in `openfhe-development/benchmark/src`.
-2. **run_benchmark_8files.sh**: Located in `openfhe-development/build`.
-3. **merge.py**: Located in `openfhe-development/build`.
+1. **lib-benchmark-9files_v1.cpp**: Located in `openfhe-development/benchmark/src`.
+2. **run_benchmark_9files_v1.sh**: Located in `openfhe-development/build`.
+3. **merge1.py**: Located in `openfhe-development/build`.
 
 ### Purpose
-This program automates the benchmarking process and organizes results into CSV files for analysis. The workflow includes:
-1. Running the C++ program (`lib-benchmark-8files.cpp`) via the shell script (`run_benchmark_8files.sh`).
-2. Capturing benchmark times and CPU consumption for each function and saving them to a CSV file.
-3. Generating an organized CSV file with variable columns from the C++ program.
-4. Using the Python script (`merge.py`) to:
+This program automates the benchmarking process while allowing users to manually change parameters for benchmarking in the `lib-benchmark-8files.cpp` program. It also organizes results into CSV files for analysis. The workflow includes:
+1. Running the C++ program (`lib-benchmark-9files_v1.cpp`) via the shell script (`run_benchmark_9files_v1.sh`).
+2. Capturing benchmark times and CPU consumption for each function and saving them to a CSV file named `benchmark_time_results.csv`.
+3. Generating an organized CSV file with variable columns from the C++ program named `benchmark_notime_results.csv`.
+4. Using the Python script (`merge1.py`) to:
    - Merge the two CSV files into one comprehensive file containing variable names, benchmark times, and CPU usage.
    - Separate the time and CPU consumption for each function into smaller, more specific CSV files.
 
 ### Steps to Run
-1. Place the files in their respective directories:
-   - `lib-benchmark-8files.cpp` in `benchmark/src`.
-   - `run_benchmark_8files.sh` and `merge.py` in `build`.
 
-2. In the `build` directory, execute the following commands:
+#### First-Time Setup
+In the `build` directory, execute the following commands:
    ```bash
    chmod +x run_benchmark_8files.sh
    cmake ..
-   ./run_benchmark_8files.sh
-   python3 merge.py
+   make lib-benchmark-9files_v1
+   ./run_benchmark_9files_v1.sh
+   python3 merge1.py
 
+#### After Making Changes to the C++ Code
+You only need to recompile and rerun:
+   ```bash
+   make lib-benchmark-9files_v1
+   ./run_benchmark_9files_v1.sh
+   python3 merge1.py
+   ```
+
+## 7. Benchmarking with Multi CSV File Outputs (version 2)
+
+### Files
+1. **lib-benchmark-9files_v2.cpp**: Located in `openfhe-development/benchmark/src`.
+2. **run_benchmark_9files_v2.sh**: Located in `openfhe-development/build`.
+3. **merge2.py**: Located in `openfhe-development/build`.
+
+### Prerequisites
+Before running this program, ensure the following:
+- A CSV file named `benchmark_9files.csv`, or any CSV file generated from step 6, must exist in the `openfhe-development/build` directory, user can manually change the import CSV file name in 'run_benchmark_9files_v2.sh'.
+
+### Purpose
+This program automates the benchmarking process with the shell script processes the `benchmark_9files.csv` file row by row, passing the variables to the C++ program (`lib-benchmark-9files_v2.cpp`).  It also organizes results into CSV files for analysis. The workflow includes:
+1. Running the C++ program (`lib-benchmark-9files_v2.cpp`) via the shell script (`run_benchmark_9files_v2.sh`).
+2. Passing parameters row by row from the input CSV file (`benchmark_9files.csv`) into the C++ program.
+3. Generating a CSV file named `benchmark_time_results.csv` that includes benchmark times, CPU consumption, and variable columns from the C++ program.
+4. Using the Python script (`merge2.py`) to:
+   - Organize the `benchmark_time_results.csv` into a more readable format and output to another CSV file named 'benchmark_full_output.csv'.
+   - Separate the time and CPU consumption for each function into smaller, more specific CSV files and store them in a subdirectory named 'split_benchmarks'.
+
+### Steps to Run
+
+#### First-Time Setup
+In the `build` directory, execute the following commands:
+   ```bash
+   chmod +x run_benchmark_9files_v2.sh
+   cmake ..
+   make lib-benchmark-9files_v2
+   ./run_benchmark_9files_v2.sh
+   python3 merge2.py
+
+#### After Making Changes to the C++ Code
+You only need to recompile and rerun:
+   ```bash
+   make lib-benchmark-9files_v2
+   ./run_benchmark_9files_v2.sh
+   python3 merge2.py
+   ```
 
 ## Acknowledgements
 
