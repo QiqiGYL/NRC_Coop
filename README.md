@@ -74,6 +74,41 @@ To use this functionality in your C++ project:
    #include "encoding/random_ct.h"
    ```
 
+## 2. Ciphertext Inversion in C++ 
+
+### Files
+1. **Inversion_algo.h**: Located in `openfhe-development/src/pke/include/encoding`.
+2. **Inversion_algo.cpp**: Located in `openfhe-development/src/pke/lib/encoding`.
+3. **Inversion_algo_example.cpp**: Located in `openfhe-development/benchmark/src`.
+
+### Purpose
+The `Inversion_algo` files implement Newton Inversion and Goldschmidt Inversion algorithms. These algorithms compute the inversion of a given ciphertext. 
+
+- **Inversion_algo.h**: Provides the declarations for the inversion functions.
+- **Inversion_algo.cpp**: Contains the implementation of Newton and Goldschmidt inversion methods.
+- **Inversion_algo_example.cpp**: A usage example demonstrating how to use the inversion functionality in C++.
+
+### Usage
+1. **Using Inversion in Your Code**:
+   To use the inversion functionality in your C++ program, include the `Inversion_algo.h` file:
+   ```cpp
+   #include "encoding/Inversion_algo.h"
+   
+### Steps to Run the C++ code
+1. Navigate to the `openfhe-development/build` directory.
+2. Build and  run the code:
+   ```bash
+   cmake ..
+   make Inversion_algo_example
+   ./bin/benchmark/Inversion_algo_example
+   ```
+#### After Making Changes to the C++ Code
+You only need to recompile and rerun:
+   ```bash
+   make Inversion_algo_example
+   ./bin/benchmark/Inversion_algo_example
+   ```
+
 ## 3. Generating CKKS Parameter CSV Tables with Python
 
 ### Files
