@@ -199,7 +199,6 @@ You only need to recompile and rerun:
 ### Prerequisites
 Before running this script, ensure the following:
 - A CSV file must be available as input. The file should be located in the same directory where the script is executed.  (The user can manually change the imported CSV file name in `CKKS_convertDB.py`.)
-- The `sqlite3` library must be installed in your Python environment.
 
 ### Purpose
 The script `CKKS_convertDB.py` simplifies the process of converting a CSV file into a SQLite3 database. It:
@@ -223,7 +222,6 @@ The script `CKKS_convertDB.py` simplifies the process of converting a CSV file i
 ### Prerequisites
 Before running the benchmarking program, ensure the following:
 - A SQLite3 database file named `big_table_128.db` must exist in the `openfhe-development/build` directory. (The user can manually change the imported database file name in `run_big_table_db.sh`.)
-- The `sqlite3` library must be installed in your C++ environment.
 
 ### Purpose
 The benchmarking program automates the evaluation of CKKS precision in OpenFHE, using a SQLite3 database. The shell script `run_big_table_db.sh`:
@@ -271,7 +269,6 @@ You only need to recompile and rerun:
 ### Prerequisites
 Before running this script, ensure the following:
 - A SQLite3 database file named `big_table_128_precision_final1.db` must exist in the `openfhe-development/build` directory. (The user can manually change the imported database file name in `filterDB.py`.)
-- The `sqlite3` library must be installed in your Python environment.
 
 ### Purpose
 The python code `filterDB.py` processes the input database to:
@@ -306,7 +303,6 @@ Example **big_table_128_precision_final1_f.db** output should have seven columns
 ### Prerequisites
 Before running this script, ensure the following:
 - A SQLite database file named `big_table_128_precision_final1_f.db` must exist in the `openfhe-development/build` directory.  (The user can manually change the imported database file name in `CKKS_paramters_opt_GUI.py`.)
-- The `sqlite3` and the `tkinter` library must be installed in your Python environment.
 
 ### Purpose
 The purpose of this script is to enable users to filter data from a database for CKKS parameter optimization. It:
@@ -340,7 +336,6 @@ Example **filtered_output.csv** output should have seven columns:
 ### Prerequisites
 Before running this script, ensure the following:
 - A SQLite database file named `big_table_128_precision_final1_f.db` must exist in the `openfhe-development/build` directory.  (The user can manually change the imported database file name in `CKKS_paramters_opt_GUI.py`.)
-- The `sqlite3` and the `tkinter` library must be installed in your Python environment.
 
 ### Purpose
 The purpose of this script is to enable users to filter data from a database for CKKS parameter optimization. It:
