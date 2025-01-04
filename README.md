@@ -1,6 +1,8 @@
 
 # Privacy-Preserving-Library-Project
 
+This is my coop for Fall 2024.
+
 This project is a privacy-preserving Library that aims to implement and and perform benchmarking of homomorphic methods. It includes secure and optimal FHE parameters computation. 
 
 # Preparation
