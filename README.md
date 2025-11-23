@@ -319,7 +319,7 @@ Example **big_table_128_precision_final1_f.db** output should have seven columns
 
 ### Prerequisites
 Before running this script, ensure the following:
-- A SQLite database file named `big_table_128_precision_final1_f.db` must exist in the `openfhe-development/build` directory.  (The user can manually change the imported database file name in `CKKS_paramters_opt_GUI.py`.)
+- A SQLite database file named `big_table_128_precision_final1_f.db` must exist in the `openfhe-development/build` directory.  (The user can manually change the imported database file name in `CKKS_parameters_opt_GUI.py`.)
 
 ### Purpose
 The purpose of this script is to enable users to filter data from a database for CKKS parameter optimization. It:
@@ -342,7 +342,7 @@ Example **filtered_output.csv** output should have seven columns:
 2. Ensure the SQLite database file `big_table_128_precision_final1_f.db` is present in the same directory.
 3. Execute the script using Python:
    ```bash
-   python3 CKKS_paramters_opt_GUI.py
+   python3 CKKS_parameters_opt_GUI.py
    ```
 
 ## 9. CKKS Parameter Optimization with GUI (Version 2)
@@ -382,7 +382,7 @@ Example output CSV file should have seven columns:
 2. Ensure the SQLite database file `big_table_128_precision_final1_f.db` is present in the same directory.
 3. Execute the script using Python:
    ```bash
-   python3 CKKS_paramters_opt_GUI_ver2.py
+   python3 CKKS_parameters_opt_GUI_ver2.py
    ```
    
 ## 10. Benchmarking with Multi CSV File Outputs （Version 1）
